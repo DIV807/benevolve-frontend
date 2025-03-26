@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+}
+
+.leaderboard-container {
+    margin: 20px auto;
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.rank {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.badge {
+    font-weight: bold;
+}
+
+.share-btn {
+    background: #ff5722;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.share-btn:hover {
+    background: #e64a19;
+}
+
+.toggle-dark-mode {
+    margin: 20px;
+    padding: 10px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+}

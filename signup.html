@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="./assets/css/stylesignup.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>Sign Up</h1>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="showForm('volunteer')">Volunteer</button>
+        <button class="tab-btn" onclick="showForm('ngo')">NGO</button>
+    </div>
+
+    <!-- Volunteer Sign-Up Form -->
+    <form id="volunteer-form" class="form active">
+        <div class="input-box">
+            <input type="text" id="volunteer-name" placeholder="Full Name" required>
+            <i class="bx bxs-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="email" id="volunteer-email" placeholder="Email" required>
+            <i class="bx bxs-envelope"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" id="volunteer-password" placeholder="Password" required>
+            <i class="bx bxs-lock-alt"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="volunteer-interests" placeholder="Interests (e.g., Teaching, Healthcare)" required>
+            <i class="bx bxs-heart"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="volunteer-availability" placeholder="Availability (e.g., Weekends, Evenings)" required>
+            <i class="bx bxs-time"></i>
+        </div>
+        <button type="submit" class="btn">Sign Up as Volunteer</button>
+    </form>
+
+
+
+
+
+    <!-- NGO Sign-Up Form -->
+    <form id="ngo-form" class="form">
+        <div class="input-box">
+            <input type="text" id="ngo-name" placeholder="NGO Name" required>
+            <i class="bx bxs-building"></i>
+        </div>
+        <div class="input-box">
+            <input type="email" id="ngo-email" placeholder="Contact Email" required>
+            <i class="bx bxs-envelope"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" id="ngo-password" placeholder="Password" required>
+            <i class="bx bxs-lock-alt"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="ngo-mission" placeholder="Mission Statement" required>
+            <i class="bx bxs-message-square-detail"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="ngo-areas" placeholder="Areas of Operation" required>
+            <i class="bx bxs-map"></i>
+        </div>
+        <button type="submit" class="btn">Sign Up as NGO</button>
+    </form>
+
+    <div class="register-link">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</div>
+
+
+
+
+<script>
+    
+    function showForm(type) {
+        document.getElementById('volunteer-form').classList.remove('active');
+        document.getElementById('ngo-form').classList.remove('active');
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+        if (type === 'volunteer') {
+            document.getElementById('volunteer-form').classList.add('active');
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        } else {
+            document.getElementById('ngo-form').classList.add('active');
+            document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        }
+    }
+
+    
+    document.getElementById('volunteer-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('volunteer-name').value;
+        const email = document.getElementById('volunteer-email').value;
+        const password = document.getElementById('volunteer-password').value;
+        const interests = document.getElementById('volunteer-interests').value;
+        const availability = document.getElementById('volunteer-availability').value;
+
+        const volunteerData = {
+            name,
+            email,
+            password,
+            interests,
+            availability
+        };
+
+        try {
+            const response = await fetch('http://localhost:5000/api/volunteers/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(volunteerData)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);  
+            } else {
+                alert(result.message);  
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong!');
+        }
+    });
+
+    
+    document.getElementById('ngo-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('ngo-name').value;
+        const email = document.getElementById('ngo-email').value;
+        const password = document.getElementById('ngo-password').value;
+        const mission = document.getElementById('ngo-mission').value;
+        const areas = document.getElementById('ngo-areas').value;
+
+        const ngoData = {
+            name,
+            email,
+            password,
+            mission,
+            areas
+        };
+
+        try {
+            const response = await fetch('http://localhost:5000/api/ngos/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ngoData)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);  
+            } else {
+                alert(result.message);  
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong!');
+        }
+    });
+</script>
+
+
+
+<script>
+    document.getElementById('volunteer-form').addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+    
+     
+        const name = event.target[0].value;
+        const email = event.target[1].value;
+        const password = event.target[2].value;
+        const interests = event.target[3].value;
+        const availability = event.target[4].value;
+    
+        const formData = { name, email, password, interests, availability };
+    
+        try {
+            const response = await fetch('http://localhost:5000/api/volunteers/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                alert('Volunteer signed up successfully!');
+            } else {
+                alert(`Error: ${data.message}`);
+            }
+        } catch (error) {
+            alert('Something went wrong! Please try again.');
+            console.error('Signup error:', error);
+        }
+    });
+    </script>
+    
+
+<script>
+        document.getElementById('ngo-form').addEventListener('submit', async (event) => {
+            event.preventDefault(); 
+    
+            const name = event.target[0].value;
+            const email = event.target[1].value;
+            const password = event.target[2].value;
+            const missionStatement = event.target[3].value;
+            const areasOfOperation = event.target[4].value;
+    
+            const formData = { name, email, password, missionStatement, areasOfOperation };
+    
+            try {
+                const response = await fetch('http://localhost:5000/api/ngos/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok) {
+                    alert('NGO signed up successfully!');
+                } else {
+                    alert(`Error: ${data.message}`);
+                }
+            } catch (error) {
+                alert('Something went wrong! Please try again.');
+                console.error('Signup error:', error);
+            }
+        });
+</script>
+    
+
+</body>
+</html>
