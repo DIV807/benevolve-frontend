@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-        const response = await fetch("http://benevolve-backend.onrender.com/api/profile", {
+        const response = await fetch("https://benevolve-backend.onrender.com/api/profile", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`, 
