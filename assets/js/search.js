@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
                 console.log("🚀 Sending request to backend...");
-                const response = await fetch("http://localhost:5000/api/events/search", {
+                const response = await fetch("http://benevolve-backend.onrender.com/api/events/search", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(searchQuery)

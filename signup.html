@@ -236,7 +236,7 @@
             const formData = { name, email, password, missionStatement, areasOfOperation };
     
             try {
-                const response = await fetch('http://localhost:5000/api/ngos/signup', {
+                const response = await fetch('http://benevolve-backend.onrender.com/api/ngos/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

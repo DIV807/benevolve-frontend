@@ -9,7 +9,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 async function loadEvents() {
     try {
-        const response = await fetch("http://localhost:5000/api/events");
+        const response = await fetch("http://benevolve-backend.onrender.com/api/events");
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
         const events = await response.json();
