@@ -110,6 +110,10 @@ body {
   font-weight: 600;
 }
 
+.btn-spacing {
+  margin-top: 10px; /* Space between buttons */
+}
+
 .wrapper .register-link {
   font-size: 14.5px;
   text-align: center;

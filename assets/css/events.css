@@ -1,0 +1,45 @@
+/* General Page Styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+/* Events Section */
+.events-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Map Styling */
+#map {
+    height: 500px;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
