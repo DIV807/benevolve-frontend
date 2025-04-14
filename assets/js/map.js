@@ -48,6 +48,10 @@ async function getCoordinates(location) {
     }
 }
 
+
+
+
+
 //plot markers on the map
 function plotMarker(lat, lon, event) {
     const marker = L.marker([lat, lon]).addTo(map);
